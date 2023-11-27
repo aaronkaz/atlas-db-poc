@@ -3,12 +3,9 @@ kind: ConfigMap
 metadata:
   name: migration-dir
 data:
-  {{ $currentScope := ../migrations}}
-{{ range $path, $_ :=  .Files.Glob  "**.up.sql" }}
-  {{- with $currentScope}}
+{{ range $path, $_ :=  .Files.Glob  "migrations/*.up.sql" }}
   {{ $path }}: |-
         {{ $files.Get $path }}
-  {{- end }}
 {{ end }}
   # 20230316085611.sql: |
   #   create table users (
