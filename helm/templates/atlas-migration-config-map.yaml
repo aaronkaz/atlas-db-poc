@@ -1,16 +1,3 @@
-# apiVersion: v1
-# kind: ConfigMap
-# metadata:
-#   name: migration-dir
-# data:
-# {{- $files := .Files }}
-#   {{ range $path, $_ :=  $files.Glob  "migrations/*.sql" }}
-#   {{ trimPrefix "migrations/" $path }}: |
-# {{ $files.Get $path | indent 4 }}
-#   {{- end }}
-#   atlas.sum: |
-# {{ $files.Get "migrations/atlas.sum" | indent 4 }}
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -28,3 +15,4 @@ data:
   atlas.sum: |
     h1:FwM0ApKo8xhcZFrSlpa6dYjvi0fnDPo/aZSzajtbHLc=
     20230316085611.sql h1:ldFr73m6ZQzNi8q9dVJsOU/ZHmkBo4Sax03AaL0VUUs=
+    
