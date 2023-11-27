@@ -24,4 +24,13 @@ spec:
             - name: http
               containerPort: {{ .Values.containerPort }}
               protocol: TCP
+          env:
+            - name: POSTGRES_HOST
+              value: {{ .Values.db.host }}
+            - name: POSTGRES_DB
+              value: {{ .Values.db.db }}
+            - name: POSTGRES_USER
+              value: {{ .Values.db.user }}
+            - name: POSTGRES_PASSWORD
+              value: {{ .Values.db.pass }}
 
