@@ -4,18 +4,9 @@ metadata:
   name: migration-dir
 data:
 {{- $files := .Files }}
-{{ range $path, $_ :=  $files.Glob  "migrations/*.up.sql" }}
-  {{ $path }}: |-
-        {{ $files.Get $path }}
-{{ end }}
-  # 20230316085611.sql: |
-  #   create table users (
-  #     id int not null auto_increment,
-  #     name varchar(255) not null,
-  #     email varchar(255) unique not null,
-  #     short_bio varchar(255) not null,
-  #     primary key (id)
-  #   );
-  # atlas.sum: |
-  #   h1:sPURLhQRvLU79Dnlaw3aiU4KVkyUVEmW+ekenqu/V2o=
-  #   20230316085611.sql h1:FKUFrD9E4ceSeBZ5owv2c05Ag8rokXGKXp53ZctbocE=
+  {{ range $path, $_ :=  $files.Glob  "migrations/*.up.sql" }}
+  {{ $path }}: |
+{{ $files.Get $path | indent 4 }}
+  {{- end }}
+  atlas.sum: |-
+{{ $files.Get "migrations/atlas.sum" | indent 4 }}
