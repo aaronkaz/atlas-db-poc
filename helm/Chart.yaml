@@ -1,0 +1,11 @@
+apiVersion: v2
+name: atlas-db-poc
+description: atlas-db-poc Helm Chart inflated by ArgoCD
+
+type: application
+
+# chart version
+version: "1.0.0"
+
+# atlas-db-poc version
+appVersion: "1.0.0"
