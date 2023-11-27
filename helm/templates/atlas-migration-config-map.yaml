@@ -3,7 +3,8 @@ kind: ConfigMap
 metadata:
   name: migration-dir
 data:
-{{ range $path, $_ :=  .Files.Glob  "migrations/*.up.sql" }}
+{{- $files := .Files }}
+{{ range $path, $_ :=  $files.Glob  "migrations/*.up.sql" }}
   {{ $path }}: |-
         {{ $files.Get $path }}
 {{ end }}
