@@ -8,5 +8,5 @@ data:
   {{ trimPrefix "migrations/" $path }}: |
 {{ $files.Get $path | indent 4 }}
   {{- end }}
-  atlas.sum: |-
+  atlas.sum: |
 {{ $files.Get "migrations/atlas.sum" | indent 4 }}
