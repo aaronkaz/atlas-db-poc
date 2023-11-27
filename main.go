@@ -33,11 +33,13 @@ func main() {
 
 		if err := c.Bind(&json); err != nil {
 			c.AbortWithStatusJSON(400, err)
+			return
 		}
 
 		u, err := q.CreateUser(c, pgdb.CreateUserParams{ID: json.Name, Name: json.Name})
 		if err != nil {
 			c.AbortWithStatusJSON(400, err)
+			return
 		}
 		c.JSON(http.StatusOK, u)
 
