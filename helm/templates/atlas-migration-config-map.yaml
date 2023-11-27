@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: migration-dir
+data:
+  {{ $currentScope := ../migrations}}
+{{ range $path, $_ :=  .Files.Glob  "**.up.sql" }}
+  {{- with $currentScope}}
+  {{ $path }}: |-
+        {{ $files.Get $path }}
+  {{- end }}
+{{ end }}
+  # 20230316085611.sql: |
+  #   create table users (
+  #     id int not null auto_increment,
+  #     name varchar(255) not null,
+  #     email varchar(255) unique not null,
+  #     short_bio varchar(255) not null,
+  #     primary key (id)
+  #   );
+  # atlas.sum: |
+  #   h1:sPURLhQRvLU79Dnlaw3aiU4KVkyUVEmW+ekenqu/V2o=
+  #   20230316085611.sql h1:FKUFrD9E4ceSeBZ5owv2c05Ag8rokXGKXp53ZctbocE=

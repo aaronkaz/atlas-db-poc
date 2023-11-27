@@ -1,0 +1,17 @@
+apiVersion: db.atlasgo.io/v1alpha1
+kind: AtlasMigration
+metadata:
+  name: atlas-db-poc-migration
+spec:
+  credentials:
+    scheme: postgres
+    host: {{ .Values.db.host }}
+    user: {{ .Values.db.user }}
+    password: {{ .Values.db.pass }}
+    database: {{ .Values.db.db }}
+    port: 5432
+    parameters:
+      sslmode: disable
+  dir:
+    configMapRef:
+      name: "migration-dir" # ConfigMap name of atlas-migration-configmap.yaml
