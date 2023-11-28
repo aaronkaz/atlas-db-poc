@@ -3,16 +3,8 @@ kind: ConfigMap
 metadata:
   name: migration-dir
 data:
-  20230316085611.sql: |
-    create sequence users_seq;
-    create table users (
-      id int not null default nextval ('users_seq'),
-      name varchar(255) not null,
-      email varchar(255) unique not null,
-      short_bio varchar(255) not null,
-      primary key (id)
-    );
-  atlas.sum: |
-    h1:FwM0ApKo8xhcZFrSlpa6dYjvi0fnDPo/aZSzajtbHLc=
-    20230316085611.sql h1:ldFr73m6ZQzNi8q9dVJsOU/ZHmkBo4Sax03AaL0VUUs=
-    
+{{- $files := .Files }}
+  {{ range $path, $_ :=  $files.Glob  "migrations/*.sql" }}
+  {{ trimPrefix "migrations/" $path }}: '{{ $files.Get $path }}'
+  {{- end }}
+  atlas.sum: '{{ $files.Get "migrations/atlas.sum" }}'
