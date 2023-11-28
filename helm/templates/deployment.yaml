@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: {{ .Chart.Name }}-deployment
   namespace: {{ .Chart.Name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   selector:
     matchLabels:

@@ -2,6 +2,8 @@ apiVersion: db.atlasgo.io/v1alpha1
 kind: AtlasMigration
 metadata:
   name: atlas-db-poc-migration
+  annotations:
+      argocd.argoproj.io/sync-wave: "0"
 spec:
   credentials:
     scheme: postgres

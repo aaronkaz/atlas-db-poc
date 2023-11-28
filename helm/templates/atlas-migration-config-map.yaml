@@ -2,6 +2,8 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: migration-dir
+  annotations:
+      argocd.argoproj.io/sync-wave: "0"
 data:
 {{- $files := .Files }}
 {{- range $path, $_ :=  $files.Glob  "migrations/*.sql" }}

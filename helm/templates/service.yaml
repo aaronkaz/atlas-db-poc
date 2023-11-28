@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: {{ .Chart.Name }}-service
   namespace: {{ .Chart.Name }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   selector: 
     app: {{ .Chart.Name }}
