@@ -1,4 +1,5 @@
-h1:vM9wo7k7rMPTEBL++MDN/0BctpiVF5+LA0hBhTDi8Ms=
+h1:12PHgungz79Ax7cx5R3ywo9bmDspTCfRIC4I6AeuEyo=
 20231127171013_create_users.sql h1:2urZMjLRHxj6IuB2gHua5h9ZA27TbQu/T1y2J7NoPLA=
 20231128162006_create_accounts.sql h1:Xl0mK3l/8dcIjUju1e9lfrtG94VYkHBRakgQpN2KgI8=
 20231128163533_add_account_id_to_users.sql h1:6oeFEa96gsYRdpdHl5DlAjH20H/lDjDD2YZ5ynrW/1Y=
+20231129151137_add_title_to_user.sql h1:ERb5QcYhtGyP6S7DTTi3pUdZbG94Ejo8d2mOkfIMMzE=
