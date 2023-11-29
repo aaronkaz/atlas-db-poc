@@ -4,9 +4,14 @@
 
 package pgdb
 
-import ()
+import (
+	"database/sql"
+)
 
 type User struct {
-	ID   string
-	Name string
+	ID    string
+	Name  string
+	Email sql.NullString
+	Title sql.NullString
+	Foo   sql.NullString
 }

@@ -95,7 +95,7 @@ func TestMain(m *testing.M) {
 		log.Fatalf("Could not migrate db driver: %s", err)
 	}
 	mg, err := migrate.NewWithDatabaseInstance(
-		"file://go-migrations",
+		"file://helm/migrations",
 		"postgres", driver)
 	if err != nil {
 		log.Fatalf("Could not create new migrate instance: %s", err)

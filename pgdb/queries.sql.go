@@ -7,25 +7,33 @@ package pgdb
 
 import (
 	"context"
+	"database/sql"
 )
 
 const createUser = `-- name: CreateUser :one
 INSERT INTO users (
-  id, name
+  id, name, title
 ) VALUES (
-  $1, $2
+  $1, $2, $3
 )
-RETURNING id, name
+RETURNING id, name, email, title, foo
 `
 
 type CreateUserParams struct {
-	ID   string
-	Name string
+	ID    string
+	Name  string
+	Title sql.NullString
 }
 
 func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, error) {
-	row := q.db.QueryRowContext(ctx, createUser, arg.ID, arg.Name)
+	row := q.db.QueryRowContext(ctx, createUser, arg.ID, arg.Name, arg.Title)
 	var i User
-	err := row.Scan(&i.ID, &i.Name)
+	err := row.Scan(
+		&i.ID,
+		&i.Name,
+		&i.Email,
+		&i.Title,
+		&i.Foo,
+	)
 	return i, err
 }

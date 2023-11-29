@@ -28,7 +28,8 @@ func main() {
 	r := gin.Default()
 	r.POST("/create", func(c *gin.Context) {
 		var json struct {
-			Name string `json:"name" binding:"required"`
+			Name  string `json:"name" binding:"required"`
+			Title string `json:"title"`
 		}
 
 		if err := c.Bind(&json); err != nil {
@@ -38,7 +39,7 @@ func main() {
 			return
 		}
 
-		u, err := q.CreateUser(c, pgdb.CreateUserParams{ID: json.Name, Name: json.Name})
+		u, err := q.CreateUser(c, pgdb.CreateUserParams{ID: json.Name, Name: json.Name, Title: sql.NullString{String: json.Title}})
 		if err != nil {
 			c.AbortWithStatusJSON(400, gin.H{
 				"error": fmt.Sprintf("%s", err),
