@@ -1,6 +1,6 @@
 image:
   repository: docker.io/aaronkaz/atlas-db-poc
-  tag: v1.0.3
+  tag: v1.0.2
   pullPolicy: IfNotPresent
 
 containerPort: 9000

@@ -1,1 +1,1 @@
-this is a bad file!;
+ALTER TABLE "public"."users" ADD COLUMN "bar" character varying(255);
