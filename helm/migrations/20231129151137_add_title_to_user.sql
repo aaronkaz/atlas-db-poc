@@ -1,1 +1,1 @@
-ALTER TABLE "public"."users" ADD COLUMN "title" varying(255);
+ALTER TABLE "public"."users" ADD COLUMN "title" character varying(255);
