@@ -5,5 +5,5 @@ metadata:
   annotations:
       argocd.argoproj.io/sync-wave: "0"
 data:
-  dns_name: {{ .Values.db.host }}
-  port: 5432
+  dns_name: "{{ .Values.db.host }}"
+  port: "5432"
