@@ -7,11 +7,17 @@ metadata:
 spec:
   credentials:
     scheme: postgres
-    host: {{ .Values.db.host }}
+    hostFrom:
+      configMapKeyRef:
+        name: postgresql-endpoint           
+        key: dns_name 
     user: {{ .Values.db.user }}
     password: {{ .Values.db.pass }}
     database: {{ .Values.db.db }}
-    port: 5432
+    portFrom:
+      configMapKeyRef:
+        name: postgresql-endpoint
+        key: port
     parameters:
       sslmode: disable
   dir:
